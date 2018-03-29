@@ -1,0 +1,62 @@
+showTo: "all"
+priority: 0
+
+showHeaderFooter: true
+header:
+  - '&6Mängijaid: &e${playerset:global size} &7| &6Meeskonnast: &e${playerset:admins size}'
+  - '&6Voksel: &e${playerset:voksel size} &7| &6KlotsCraft: &e${playerset:klotscraft size} &7| &6VikingMC: &e${playerset:vikingmc size}'
+headerAnimationUpdateInterval: 5
+footer:
+  - '&2Foorum: &awabariik.ee'
+  - '&2Blogi: &ablogi.nuhvel.eu'
+  - '&2Facebook: &afb.com/WabariikMC'
+footerAnimationUpdateInterval: 5
+
+customPlaceholders:
+  viewer_colored_ping0:
+    !conditional
+    condition: "${viewer ping} < 50"
+    true: "&a${viewer ping}"
+    false: "&e${viewer ping}"
+  viewer_colored_ping:
+    !conditional
+    condition: "${viewer ping} < 150"
+    true: ${viewer_colored_ping0}
+    false: "&c${viewer ping}"
+  other_server_prefix:
+    !conditional
+    condition: '${viewer server} == ${player server}'
+    true: '&f'
+    false: '&7'
+
+playerSets:
+  global:
+    filter: "true"
+    hiddenPlayers: "VISIBLE_TO_ADMINS"
+  admins:
+    filter: ${player permission nuhvel.mk}
+    hiddenPlayers: "VISIBLE_TO_ADMINS"
+  voksel:
+    filter: |-
+      ${player server} == "missioonid"
+      or ${player server} == "linn"
+      or ${player server} == "maa"
+    hiddenPlayers: "VISIBLE_TO_ADMINS"
+  klotscraft:
+    filter: |-
+      ${player server} == "survival"
+      or ${player server} == "skyblock"
+    hiddenPlayers: "VISIBLE_TO_ADMINS"
+  vikingmc:
+    filter: |-
+      ${player server} == "vanilla"
+      or ${player server} == "factions"
+      or ${player server} == "pvp"
+      or ${player server} == "hg"
+    hiddenPlayers: "VISIBLE_TO_ADMINS"
+    
+type: DYNAMIC_SIZE
+
+playerSet: global
+playerOrder: "playerServerFirst,bungeeCordGroups,alphabetically"
+playerComponent: "${other_server_prefix}${player name}"

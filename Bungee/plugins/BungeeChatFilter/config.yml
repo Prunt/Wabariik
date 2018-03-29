@@ -1,0 +1,206 @@
+#Monitor commands - Monitor commands send by the players as chat
+Monitor Commands: true
+
+#Commands - The list of commands that the plugin will monitor
+Commands:
+- msg
+- message
+- sõnum
+- s
+- tell
+- whisper
+- say
+- abi
+- a
+- helpop
+- appi
+- vasta
+- v
+- reply
+- r
+- ?
+- eemal
+- lõimud
+- lõim
+
+#AntiSpam - Will use the minimum chat delay to force players to wait *1500ms or what ever you specified between messages
+AntiSpam: true
+AntiRepeat: true
+
+#Minimum-Chat-Delay - The time in miliseconds a player must wait between messages
+Minimum-Chat-Delay: 500
+Minimum-Repeat-Delay: 10000
+
+#Messages sent to the player in chat when they are blocked by AntiSpam or AntiRepeat
+AntiSpamMessage: '&2&lHoiatus > &cPalun ära spämmi.'
+AntiRepeatMessage: '&2&lHoiatus > &cPalun ära spämmi.'
+
+#Rules - Groups of rules which monitor the chat
+#rules:
+#  rulename:  - the name of the rule
+#      regex:  - the string regex that the rule will check for
+#      ignores:  - If the message contains a value that matches ignore then none of the actions will be performed
+#      permission: - the permission required to bypass this rule
+#      actions: - here is the list of actions the rule will perform if matched
+#          deny: true      - this will deny the message and cancel the event
+#          message: (message)      -this will send a message (message) to the player
+#          kick: (message)    - this will kick the player with the (message)
+#          alert: (message)        - this will send a broadcast to the server {player} will be replaced with the players display name
+#          command: /(command)    - this will cause the player to send the (command)
+#          remove: true        - this will remove any matches from the players message
+#          replace:              - this will replace the matched word with a random word from the list below
+#              - word1
+#              - word2
+#          lower:            - this will change any matches into lowercase
+#          pcommand: /(command)    - Proxy command, this will cause the player to send the (command) to the proxy server. No /
+#          scommand: /(command)    - Server command this will cause the player to send the (command) to their current server. Yes /
+#          ccommand: /(command)    - Console command, this will cause the proxy server console to execute the (command). No /
+#                                      Note that there is currently no way to execute a command as the current server console.
+
+rules:
+  roppused:
+    regex: (?i)(\bse(ks|x)|\braibe\b|idi(oot|kas)|dildo|bl(y|j|i)(a|ä)(t)?|nihhi|till|twat|shit|p(e)+nis|\btra\b|värd|t(ü|y)ra|\bli(ts|bu)\b|mun(n|and)|\b((s|v)(i|1)(t+)(u|a)?)|bitch|\bt(i|u)ss\b|puts|per(s+)e|\b(re)?tard\b|jobi|pask|hu(i|j)\b|lohh|pede|\brais(k|a)\b|(f((a|u|v|y)c?)k)|\bcunt\b|\bwhore\b|\bf(a|ä+)g\b|\bslut\b|\bdi(c|k|ck)\b|cock|vag(i+)na|\bnoku\b|\bke(p+)i(me)?|\blita|pärak|\bni(k+)u|wanker|sperm(a)?)
+    ignores: (?i)(still|vita|site|tsitrus|tilluke|hüppaski|fakt|assist|vits|vanishit)
+    actions:
+      message: '&2&lHoiatus > &cHoidu ropendamisest ja sõimamisest!'
+      ccommand: 'helpop PAHA SÕNA: {player}: {message}'
+      replace:
+      - '****'
+  caps:
+    regex: (([A-ZÕÄÖÜ]{3,} ){2,})|([A-ZÕÄÖÜ]{3,} [A-ZÕÄÖÜ]{3,})
+    actions:
+      message: '&2&lHoiatus > &cÄra kasuta liigselt suurtähelukku!'
+      lower: true
+  domeenid:
+    regex: \b\d{1,3}+\p{P}*\d{1,3}+\p{P}*\d{1,3}+\p{P}*\d{1,3}+\b|([\w-\.]+)((?:[\w]+\.)+)([a-zA-Z]{2,4})
+    ignores: (?i)(wabariik|klotscraft|nuhvel|google|youtube)
+    actions:
+      replace:
+      - '****'
+      message: '&2&lHoiatus > &cReklaamimine on keelatud!'
+      ccommand: 'abi REKLAAM: {player}: {message}'
+  k2sud:
+    regex: (?i)(^\/\?)
+    actions:
+      replace:
+      - '/käsud'
+  skin:
+    regex: (?i)((^\/välimus$)|(^\/välimus $))
+    actions:
+      deny: true
+      message: '&cKasutamine: /välimus <preemiumNimi>'
+  skin1:
+    regex: (?i)(^\/välimus)
+    actions:
+      replace:
+      - '/skin'
+  j2ljed:
+    regex: (?i)(^\/jäljed$)
+    actions:
+      replace:
+      - '/trails'
+  eemal:
+    regex: (?i)(^\/eemal$)
+    actions:
+      replace:
+      - '/afk'
+  pood:
+    regex: (?i)(^\/pood$)
+    actions:
+      replace:
+      - '/gcs'
+  myy:
+    regex: (?i)(^\/müü$)
+    actions:
+      replace:
+      - '/sellall'
+  plokkideks:
+    regex: (?i)(^\/plokkideks$)
+    actions:
+      replace:
+      - '/autoblocks'
+  autoplokk:
+    regex: (?i)(^\/autoplokk$)
+    actions:
+      replace:
+      - '/autoblocks toggle'
+  plokid1:
+    regex: (?i)((^\/plokid$)|(^\/plokid $))
+    actions:
+      replace:
+      - /blocks
+  plokid:
+    regex: (?i)(^\/plokid)
+    actions:
+      replace:
+      - /blocks check
+  autosula:
+    regex: (?i)(^\/autosula$)
+    actions:
+      replace:
+      - '/autosmelt'
+  automyyk:
+    regex: (?i)(^\/automüük$)
+    actions:
+      replace:
+      - '/autosell'
+  vkeeldu:
+    regex: (?i)(^\/vaheta keeldu)
+    actions:
+      replace:
+      - /trade decline
+  vn6ustu:
+    regex: (?i)(^\/vaheta nõustu)
+    actions:
+      replace:
+      - /trade accept
+  vaheta:
+    regex: (?i)((^\/vaheta$)|(^\/vaheta $))
+    actions:
+      deny: true
+      message: '&cKasutamine: /vaheta <mängija|nõustu|keeldu>'
+  vahetam:
+    regex: (?i)(^\/vaheta)
+    actions:
+      replace:
+      - /trade
+  v6itle:
+    regex: (?i)((^\/duell$)|(^\/duell $))
+    actions:
+      deny: true
+      message: '&cKasutamine: /duell <mängija|nõustu|lahku>'
+  v6itlen:
+    regex: (?i)((^\/duell nõustu$)|(^\/duell nõustu $))
+    actions:
+      deny: true
+      message: '&cKasutamine: /duell nõustu <mängija>'
+  v6itlenm:
+    regex: (?i)(^\/duell nõustu)
+    actions:
+      replace:
+      - /duel accept
+  v6itlel:
+    regex: (?i)(^\/duell lahku)
+    actions:
+      replace:
+      - /duel leave
+  v6itlem:
+    regex: (?i)(^\/duell)
+    actions:
+      replace:
+      - /duel send
+  l6imud:
+    regex: (?i)(^\/lõimud)
+    actions:
+      replace:
+      - /warps
+  l6im:
+    regex: (?i)(^\/lõim)
+    actions:
+      replace:
+      - /warp
+  xppudel:
+    regex: (?i)(^\/xppudel)
+    actions:
+      replace:
+      - /bottle get

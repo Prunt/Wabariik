@@ -1,0 +1,8 @@
+settings:
+  prefix: '&2&lPing > &eSinu ping: %pingcolor%%ping%ms'
+  other_prefix: '&2&lPing > &eMängija %player%&e ping: %pingcolor%%ping%ms'
+  not_online: '&2&lPing > &cMängijat %player% ei leitud!'
+  use_permission: false
+  use_cooldown: false
+  cooldown_message: '&cPlease wait %time% seconds before checking again'
+  time: 5
