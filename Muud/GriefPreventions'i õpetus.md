@@ -1,4 +1,3 @@
-
 1. **Sissejuhatus.** Oletame, et oled leidnud endale sobiva koha, kuhu elama asuda. Samuti oled kogunud ka natuke puitu.
 ![0_1458868829051_2016-03-25_03.20.22.png](https://i.imgur.com/v3UVmfR.png) 
 
