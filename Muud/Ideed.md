@@ -1,0 +1,6 @@
+- mängijate poed, PVP areenid, kohvikud
+- turuplats renditavate putkadega
+- lisaõigustega tasemed
+- meeskonnaliikmed hääletavad avalduste üle
+  - juhtkonda pääsemiseks hääletavad juhtkonnaliikmed; peab olema ühehäälne
+- tähtpäevadel sündmused/võistlused
